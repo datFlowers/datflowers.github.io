@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diego Tamez — iOS Developer</title>
+<meta name="description" content="Portfolio of Diego Alonso Tamez Flores. iOS & Apple platforms developer from Monterrey, México. Swift, SwiftUI, Core ML, visionOS.">
+<style>
+:root{
+  --bg-light:#fbfbfd; --bg-gray:#f5f5f7; --bg-dark:#000;
+  --text:#1d1d1f; --text-secondary:#6e6e73; --text-on-dark:#f5f5f7; --text-on-dark-sec:#86868b;
+  --blue:#0071e3; --blue-hover:#0077ed;
+  --radius:28px;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font);color:var(--text);background:var(--bg-light);font-size:17px;line-height:1.47;}
+
+/* ---------- Nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(251,251,253,.8);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.nav-inner{max-width:1024px;margin:0 auto;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 22px}
+.nav-name{font-size:17px;font-weight:600;color:var(--text);text-decoration:none;letter-spacing:-.01em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:12px;color:var(--text);text-decoration:none;opacity:.8;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+@media(max-width:734px){.nav-links{display:none}}
+
+/* ---------- Buttons / links ---------- */
+.btn{display:inline-block;background:var(--blue);color:#fff;font-size:17px;padding:11px 22px;border-radius:980px;text-decoration:none;transition:background .2s}
+.btn:hover{background:var(--blue-hover)}
+.btn.secondary{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+.btn.secondary:hover{background:var(--blue);color:#fff}
+.link{color:var(--blue);text-decoration:none;font-size:inherit}
+.link:hover{text-decoration:underline}
+.link::after{content:" ›"}
+
+/* ---------- Hero ---------- */
+.hero{padding:150px 22px 90px;text-align:center;background:var(--bg-light)}
+.hero .eyebrow{font-size:19px;font-weight:600;color:#bf4800;margin-bottom:8px}
+.hero h1{font-size:clamp(48px,9vw,96px);font-weight:700;letter-spacing:-.02em;line-height:1.05}
+.hero h1 .grad{background:linear-gradient(90deg,#0090f7,#5e5ce6 45%,#bf5af2 75%,#f74f9e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.tagline{font-size:clamp(21px,3.4vw,28px);font-weight:500;color:var(--text-secondary);margin:18px auto 0;max-width:680px;letter-spacing:.004em}
+.hero .cta{margin-top:32px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.hero .meta{margin-top:28px;font-size:14px;color:var(--text-secondary)}
+
+/* ---------- Stats ribbon ---------- */
+.stats{background:var(--bg-gray);padding:64px 22px}
+.stats-grid{max-width:1024px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stat b{display:block;font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-.02em;background:linear-gradient(180deg,#1d1d1f,#555);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:14px;color:var(--text-secondary)}
+@media(max-width:734px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:32px 12px}}
+
+/* ---------- Sections ---------- */
+section.product{padding:110px 22px;text-align:center;overflow:hidden}
+section.dark{background:var(--bg-dark);color:var(--text-on-dark)}
+section.light{background:var(--bg-light)}
+section.gray{background:var(--bg-gray)}
+.eyebrow{font-size:14px;font-weight:600;text-transform:none;letter-spacing:.01em;color:var(--text-secondary);margin-bottom:10px}
+.dark .eyebrow{color:var(--text-on-dark-sec)}
+section.product h2{font-size:clamp(40px,6.5vw,72px);font-weight:700;letter-spacing:-.02em;line-height:1.07}
+section.product .sub{font-size:clamp(19px,2.8vw,24px);font-weight:500;max-width:640px;margin:16px auto 0;color:var(--text-secondary)}
+.dark .sub{color:var(--text-on-dark-sec)}
+.badge-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.badge{font-size:12px;font-weight:600;padding:6px 14px;border-radius:980px;background:rgba(0,113,227,.1);color:var(--blue)}
+.dark .badge{background:rgba(255,255,255,.1);color:#e8e8ed}
+.badge.award{background:linear-gradient(90deg,rgba(255,176,32,.18),rgba(255,94,58,.18));color:#ffb340}
+.light .badge.award,.gray .badge.award{color:#bf4800}
+.product-links{margin-top:22px;display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.showcase{max-width:980px;margin:54px auto 0;border-radius:var(--radius);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.light .showcase,.gray .showcase{box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.showcase img{width:100%;display:block}
+.showcase-pair{max-width:980px;margin:24px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.showcase-pair .showcase{margin:0}
+@media(max-width:734px){.showcase-pair{grid-template-columns:1fr}}
+.feature-list{max-width:880px;margin:44px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:left}
+.feature{padding:26px;border-radius:18px;background:#161617}
+.light .feature,.gray .feature{background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.06)}
+.feature h4{font-size:17px;font-weight:600;margin-bottom:6px}
+.feature p{font-size:14px;color:var(--text-on-dark-sec);line-height:1.5}
+.light .feature p,.gray .feature p{color:var(--text-secondary)}
+@media(max-width:734px){.feature-list{grid-template-columns:1fr}}
+
+/* ---------- Experience ---------- */
+.timeline{max-width:880px;margin:54px auto 0;text-align:left;display:grid;gap:20px}
+.job{background:#fff;border-radius:18px;padding:32px;box-shadow:0 4px 18px rgba(0,0,0,.06)}
+.job-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.job h3{font-size:21px;font-weight:600;letter-spacing:-.01em}
+.job .where{font-size:15px;color:var(--text-secondary)}
+.job .when{font-size:13px;font-weight:600;color:var(--blue);white-space:nowrap}
+.job ul{margin:14px 0 0 18px;color:var(--text-secondary);font-size:15px;display:grid;gap:8px}
+
+/* ---------- Skills ---------- */
+.skills-grid{max-width:980px;margin:54px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:left}
+.skill-card{background:var(--bg-gray);border-radius:18px;padding:30px}
+.dark .skill-card{background:#161617}
+.skill-card h4{font-size:19px;font-weight:600;margin-bottom:14px}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13px;font-weight:500;padding:6px 12px;border-radius:980px;background:#fff;color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.dark .chip{background:#2c2c2e;color:#e8e8ed;box-shadow:none}
+@media(max-width:734px){.skills-grid{grid-template-columns:1fr}}
+
+/* ---------- Awards ---------- */
+.awards{max-width:880px;margin:54px auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;text-align:left}
+.award-card{border-radius:18px;padding:30px;background:linear-gradient(135deg,#1c1c1e,#101012);border:1px solid rgba(255,255,255,.08)}
+.award-card .medal{font-size:28px}
+.award-card h4{font-size:18px;font-weight:600;margin:10px 0 4px;color:#f5f5f7}
+.award-card p{font-size:14px;color:var(--text-on-dark-sec)}
+@media(max-width:734px){.awards{grid-template-columns:1fr}}
+
+/* ---------- About / footer ---------- */
+.about-quote{max-width:780px;margin:0 auto;font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:-.015em;line-height:1.25}
+.about-quote .grad{background:linear-gradient(90deg,#0090f7,#5e5ce6,#bf5af2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.about-detail{max-width:640px;margin:24px auto 0;color:var(--text-secondary);font-size:17px}
+footer{background:var(--bg-gray);padding:48px 22px;font-size:12px;color:var(--text-secondary)}
+.footer-inner{max-width:1024px;margin:0 auto}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:18px}
+.footer-links a{color:var(--text);text-decoration:none;font-size:14px}
+.footer-links a:hover{text-decoration:underline}
+footer hr{border:none;border-top:1px solid #d2d2d7;margin:18px 0}
+
+/* ---------- Reveal animation ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.25,.1,.25,1),transform .8s cubic-bezier(.25,.1,.25,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="#top">Diego Tamez</a>
+    <ul class="nav-links">
+      <li><a href="#deeptrack">DeepTrack</a></li>
+      <li><a href="#morgan">Morgan</a></li>
+      <li><a href="#zayu">Zayu</a></li>
+      <li><a href="#urbanite">Urbanite</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <p class="eyebrow reveal">Monterrey, México</p>
+  <h1 class="reveal">Diego Tamez.<br><span class="grad">Built for Apple platforms.</span></h1>
+  <p class="tagline reveal">iOS developer crafting native experiences with Swift, SwiftUI, Core ML, and visionOS — from family businesses to the FIFA World Cup.</p>
+  <div class="cta reveal">
+    <a class="btn" href="#deeptrack">See my work</a>
+    <a class="btn secondary" href="mailto:diegotamez05@hotmail.com">Get in touch</a>
+  </div>
+  <p class="meta reveal">B.S. Software Development Engineering · Tecmilenio University · Class of 2026</p>
+</header>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat reveal"><b>4</b><span>Native Apple apps shipped</span></div>
+    <div class="stat reveal"><b>2×</b><span>2nd place, Swift challenges</span></div>
+    <div class="stat reveal"><b>5</b><span>Academic Excellence Awards</span></div>
+    <div class="stat reveal"><b>200K+</b><span>Client records automated at BAT through an app</span></div>
+  </div>
+</div>
+
+<!-- DEEPTRACK -->
+<section class="product dark" id="deeptrack">
+  <p class="eyebrow reveal">Featured project · Swift Student Challenge 2026 submission</p>
+  <h2 class="reveal">DeepTrack</h2>
+  <p class="sub reveal">A full, offline-capable ERP for small businesses — inventory, sales, suppliers, and financial health, rebuilt natively for iPhone. Inspired by my family's own business, "Las Flores."</p>
+  <div class="badge-row reveal">
+    <span class="badge">Swift</span><span class="badge">SwiftUI</span><span class="badge">SwiftData</span><span class="badge">Core ML</span><span class="badge">Apple Intelligence</span><span class="badge">App Intents · Siri</span><span class="badge">WidgetKit</span>
+  </div>
+  <div class="showcase reveal"><img src="assets/deeptrack-hero.jpg" alt="DeepTrack dashboard with revenue, expenses, margin, and AI insights" loading="lazy"></div>
+  <div class="showcase-pair">
+    <div class="showcase reveal"><img src="assets/deeptrack-coreml.jpg" alt="Core ML restock predictions and Apple Intelligence sentiment analysis" loading="lazy"></div>
+    <div class="showcase reveal"><img src="assets/deeptrack-finance.jpg" alt="Granular revenue and expense breakdowns with strategic allocation" loading="lazy"></div>
+  </div>
+  <div class="feature-list">
+    <div class="feature reveal"><h4>Predictive restocking</h4><p>An on-device Core ML model forecasts demand from historical sales and recommends exactly how much to produce.</p></div>
+    <div class="feature reveal"><h4>Context-aware sentiment</h4><p>Apple Intelligence evaluates customer feedback notes on every transaction — no servers, fully private.</p></div>
+    <div class="feature reveal"><h4>Deep platform integration</h4><p>Siri queries, Control Center actions, Vision-powered data entry, and widgets for dark and light mode.</p></div>
+  </div>
+</section>
+
+<!-- MORGAN -->
+<section class="product dark" id="morgan" style="background:#0a0a0c">
+  <p class="eyebrow reveal">🥈 2nd Place · Swift Challenge Fest 2025</p>
+  <h2 class="reveal" style="background:linear-gradient(90deg,#2997ff,#bf5af2 60%,#f74f9e);-webkit-background-clip:text;background-clip:text;color:transparent">Morgan</h2>
+  <p class="sub reveal">An immersive Apple Vision Pro tutor that turns any room into a classroom — astronomy, science, art, and music taught through spatial 3D experiences.</p>
+  <div class="badge-row reveal">
+    <span class="badge">visionOS</span><span class="badge">RealityKit</span><span class="badge">SwiftUI</span><span class="badge">Maya · Blender</span><span class="badge">VoiceOver · Audio Graphs</span>
+  </div>
+  <div class="showcase reveal"><img src="assets/morgan-room-wide.jpg" alt="Morgan astronomy area rendered in a living room through Apple Vision Pro" loading="lazy"></div>
+  <div class="feature-list">
+    <div class="feature reveal"><h4>Spatial-first learning</h4><p>Custom 3D assets — created, rigged, and textured by the team — anchored in the learner's real space.</p></div>
+    <div class="feature reveal"><h4>Accessibility by design</h4><p>VoiceOver and Audio Graphs make the spatial experience usable without sight.</p></div>
+    <div class="feature reveal"><h4>Mixed-reality cohesion</h4><p>RealityKit Composer scenes blend interactive content naturally with the room around you.</p></div>
+  </div>
+</section>
+
+<!-- ZAYU -->
+<section class="product dark" id="zayu" style="background:#020d06">
+  <p class="eyebrow reveal" style="color:#30d158">Finalist · Enactus Changemakers Social Challenge 2025</p>
+  <h2 class="reveal">Zayu</h2>
+  <p class="sub reveal">An accessible, offline-capable travel companion for the FIFA World Cup 2026 — AI-assisted real-time translation, venue guides, and personal itineraries for fans visiting new cities.</p>
+  <div class="badge-row reveal">
+    <span class="badge">Swift</span><span class="badge">SwiftUI</span><span class="badge">Foundation Models</span><span class="badge">Apple Intelligence</span><span class="badge">Offline-first</span>
+  </div>
+  <div class="showcase-pair" style="margin-top:54px">
+    <div class="showcase reveal"><img src="assets/zayu-itinerary.jpg" alt="Zayu personal itinerary generation powered by Apple Intelligence" loading="lazy"></div>
+    <div class="showcase reveal"><img src="assets/zayu-translate.jpg" alt="Zayu real-time live translation screen" loading="lazy"></div>
+  </div>
+  <div class="feature-list">
+    <div class="feature reveal"><h4>Real-time translation</h4><p>Voice-driven, AI-assisted translation breaks the language barrier between visitors and locals.</p></div>
+    <div class="feature reveal"><h4>Personal itineraries</h4><p>Apple Intelligence builds day-by-day plans around matches, venues, and each fan's interests.</p></div>
+    <div class="feature reveal"><h4>Works without signal</h4><p>Offline-first architecture keeps essential guidance available in crowded stadiums and new cities.</p></div>
+  </div>
+</section>
+
+<!-- URBANITE -->
+<section class="product light" id="urbanite">
+  <p class="eyebrow reveal">Community project</p>
+  <h2 class="reveal">Urbanite</h2>
+  <p class="sub reveal">Your friend in the city. Local services, live weather and air quality, community forums, and a marketplace that supports neighborhood businesses.</p>
+  <div class="badge-row reveal">
+    <span class="badge">SwiftUI</span><span class="badge">MapKit</span><span class="badge">CoreLocation</span><span class="badge">Combine</span><span class="badge">REST APIs</span>
+  </div>
+  <div class="showcase-pair" style="margin-top:54px;grid-template-columns:1fr 1fr 1fr;max-width:860px">
+    <div class="showcase reveal"><img src="assets/urbanite-home.jpg" alt="Urbanite home screen with nearby services and city tips" loading="lazy"></div>
+    <div class="showcase reveal"><img src="assets/urbanite-forums.jpg" alt="Urbanite community forums" loading="lazy"></div>
+    <div class="showcase reveal"><img src="assets/urbanite-market.jpg" alt="Urbanite local market with business listings and reviews" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="product gray" id="experience">
+  <p class="eyebrow reveal">Experience</p>
+  <h2 class="reveal">From code to<br>real-world impact.</h2>
+  <div class="timeline">
+    <div class="job reveal">
+      <div class="job-head">
+        <div><h3>Digital Business Solutions Intern — Marketing</h3><span class="where">British American Tobacco (BAT) · Monterrey</span></div>
+        <span class="when">Jun 2025 – Present</span>
+      </div>
+      <ul>
+        <li>Designed and deployed Power Apps and SharePoint solutions for executive leaders, HR, and business teams across 3 LATAM markets — including a workflow processing ~5,000 daily records for 200,000 clients.</li>
+        <li>Built interactive Power BI dashboards and documented SQL migration mappings to preserve field-level data integrity during system transitions.</li>
+        <li>Optimized Python scripts extracting JSON datasets from REST APIs; authored BRDs and Data Contracts aligning technical delivery with Marketing requirements.</li>
+        <li>Coordinated activation and configuration of 84 mobile devices for field-sales representatives.</li>
+      </ul>
+    </div>
+    <div class="job reveal">
+      <div class="job-head">
+        <div><h3>Cybersecurity Intern</h3><span class="where">Tecmilenio University · Monterrey</span></div>
+        <span class="when">Jan 2025 – May 2025</span>
+      </div>
+      <ul>
+        <li>Audited student directories in CyberArk, reviewed login patterns and email activity for risk indicators, and contributed to security-awareness materials protecting personal data.</li>
+      </ul>
+    </div>
+    <div class="job reveal">
+      <div class="job-head">
+        <div><h3>IT Support Intern</h3><span class="where">Tecmilenio University · Monterrey</span></div>
+        <span class="when">Aug 2024 – Dec 2024</span>
+      </div>
+      <ul>
+        <li>Automated workstation imaging and deployment with CMD scripts; resolved hardware and software incidents and configured systems for new hires.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="product light" id="skills">
+  <p class="eyebrow reveal">Toolkit</p>
+  <h2 class="reveal">Fluent in Apple.<br>Versatile everywhere else.</h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <h4>Apple Engineering</h4>
+      <div class="chip-row"><span class="chip">Swift</span><span class="chip">SwiftUI</span><span class="chip">SwiftData</span><span class="chip">Core ML</span><span class="chip">visionOS</span><span class="chip">RealityKit</span><span class="chip">App Intents</span><span class="chip">WidgetKit</span><span class="chip">Xcode</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <h4>Data & Business Solutions</h4>
+      <div class="chip-row"><span class="chip">Power BI</span><span class="chip">Power Apps</span><span class="chip">SharePoint</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">REST APIs</span><span class="chip">JSON</span><span class="chip">Excel</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <h4>Design & Delivery</h4>
+      <div class="chip-row"><span class="chip">Figma</span><span class="chip">Maya</span><span class="chip">Blender</span><span class="chip">Git / GitHub</span><span class="chip">Agile</span><span class="chip">BRDs</span><span class="chip">Data Contracts</span><span class="chip">UX</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="product dark">
+  <p class="eyebrow reveal">Recognition</p>
+  <h2 class="reveal">Building. Competing.<br>Getting noticed.</h2>
+  <div class="awards">
+    <div class="award-card reveal"><span class="medal">🥈</span><h4>Swift Challenge Fest 2025 — 2nd Place</h4><p>Morgan, an immersive visionOS learning experience for Apple Vision Pro.</p></div>
+    <div class="award-card reveal"><span class="medal">🥈</span><h4>Liverpool Swift Changemakers — 2nd Place</h4><p>Interactive retail prototype in SwiftUI connecting digital experience design with commercial strategy.</p></div>
+    <div class="award-card reveal"><span class="medal">🏅</span><h4>Enactus Changemakers Social Challenge — Finalist</h4><p>Zayu, an accessible AI-assisted travel companion for the World Cup 2026.</p></div>
+    <div class="award-card reveal"><span class="medal">🚩</span><h4>Banorte Hackathon — Team Lead</h4><p>Led a cross-functional team redesigning a mobile banking feature around accessibility and customer experience.</p></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="product light" id="contact">
+  <p class="eyebrow reveal">About</p>
+  <p class="about-quote reveal">"I build native apps that solve real problems for real people — <span class="grad">starting with my own community.</span>"</p>
+  <p class="about-detail reveal">From digitizing my family's business with DeepTrack to helping World Cup fans navigate new cities with Zayu, every project starts with a person who needs it. Next stop: growing as a developer and designer alongside the world's best — at the Apple Developer Academy.</p>
+  <div class="cta reveal" style="margin-top:36px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap">
+    <a class="btn" href="mailto:diegotamez05@hotmail.com">diegotamez05@hotmail.com</a>
+    <a class="btn secondary" href="https://www.linkedin.com/in/diego-tamez-bbb6ba350" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn secondary" href="https://github.com/datFlowers" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="#deeptrack">DeepTrack</a><a href="#morgan">Morgan</a><a href="#zayu">Zayu</a><a href="#urbanite">Urbanite</a><a href="#experience">Experience</a>
+    </div>
+    <hr>
+    <p>Diego Alonso Tamez Flores · Monterrey, Nuevo León, México · +52 826 154 6419</p>
+    <p>Designed in SwiftUI spirit, built with care. © 2026 Diego Tamez.</p>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
